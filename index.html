@@ -64,6 +64,7 @@
                 $("#buttons-view").empty();
       
                 for (var i = 0; i < creatures.length; i++) {
+                  var a = $("<button>");
                   a.addClass("creature");
                   a.attr("data-name", creatures[i]);
                   a.text(creatures[i]);
@@ -86,7 +87,7 @@
                 renderButtons();
               });
       
-              // Function for displaying the creature GIFS
+              // Function for displaying the creature info
               $(document).on("click", ".creature", createCreatureGifs);
       
               // Calling the renderButtons function to display the intial buttons
