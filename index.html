@@ -42,7 +42,9 @@
               <!-- Button triggers new creature button -->
               <input id="add-creature" type="submit" value="Add a Creature!" />
             </form>
-      
+            <div id="gifs-appear-here">
+            </div>
+          
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script type="text/javascript">
               // Initial array of creatures
@@ -56,7 +58,52 @@
               // function for capturing the creature name from the data-attribute
               function createCreatureGifs() {
                 var creatureName = $(this).attr("data-name");
-                alert(creatureName);
+                
+                // testing if creature button clicks are working
+                // alert(creatureName);
+                var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        creatureName + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+console.log(queryURL);
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+        // After data comes back from the request
+        .then(function(response) {
+          console.log(queryURL);
+
+          console.log(response);
+        
+          // storing the data from the AJAX in a variable
+          var results = response.data;
+
+// loop for creation of HTML elements to display GIFs
+          for (var i = 0; i < results.length; i++) {
+
+            var creatureDiv = $("<div>");
+
+// Showing the Rating
+              var p = $("<p>").text("Rating: " + results[i].rating);
+
+            // creating an image tag
+            var creatureImage = $("<img>");
+           
+            // settign the cource attribute from what AJAX responds with
+
+            creatureImage.attr("src", results[i].images.fixed_height.url);
+
+            // Appending the paragraph and image tag to the creatureDiv
+            
+            creatureDiv.append(p);
+            
+            creatureDiv.append(creatureImage);
+
+            // showing the gifs on top of the screen
+            $("#gifs-appear-here").prepend(creatureDiv);
+          }
+        });
+
+
               }
       
               // Function for displaying creature buttons and adding attributes
