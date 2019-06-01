@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Sea Creature Gif Generator</title>
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap link -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- link to css style sheet -->
+    <link rel="stylesheet" type="text/css" href="assets\css\style.css" />
+  </head>
+  <body>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Sea Creature Generator!</h1>
+        <p class="lead">
+          Click on the Sea Creature button to see 10 GIFs! Want to see more?
+          Type in a new Sea Creature name and get a new button to click on to
+          see more GIFs!  
+        </p>
+      </div>
+    </div>
+
+
+    <div class="container">
+      
+            <!-- new Creature buttons will display here  -->
+            <div id="buttons-view"></div>
+      
+            <form id="creature-form">
+              <label for="creature-input">Add a Creature!</label>
+              <input type="text" id="creature-input" /><br />
+      
+              <!-- Button triggers new creature button -->
+              <input id="add-creature" type="submit" value="Add a Creature!" />
+            </form>
+      
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script type="text/javascript">
+              // Initial array of creatures
+              var creatures = [
+                "Starfish",
+                "Orca",
+                "Dolphin",
+                "Sea Dragon"
+              ];
+      
+              // function for capturing the creature name from the data-attribute
+              function createCreatureGifs() {
+                var creatureName = $(this).attr("data-name");
+                alert(creatureName);
+              }
+      
+              // Function for displaying creature buttons and adding attributes
+              function renderButtons() {
+                $("#buttons-view").empty();
+      
+                for (var i = 0; i < creatures.length; i++) {
+                  a.addClass("creature");
+                  a.attr("data-name", creatures[i]);
+                  a.text(creatures[i]);
+                 
+                  // Added the button to the HTML
+                  $("#buttons-view").append(a);
+                }
+              }
+      
+              // function waits for the button to add creature to be clicked
+              $("#add-creature").on("click", function(event) {
+                event.preventDefault();
+      
+                var creature = $("#creature-input")
+                  .val()
+                  .trim();
+      
+                creatures.push(creature);
+      
+                renderButtons();
+              });
+      
+              // Function for displaying the creature GIFS
+              $(document).on("click", ".creature", createCreatureGifs);
+      
+              // Calling the renderButtons function to display the intial buttons
+              renderButtons();
+            </script>
+          </div>
+        </body>
+  </body>
+</html>
