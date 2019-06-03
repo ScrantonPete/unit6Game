@@ -62,8 +62,8 @@
                 // testing if creature button clicks are working
                 // alert(creatureName);
                 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        creatureName + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
-console.log(queryURL);
+        creatureName + "&api_key=HfH1URp8Af1DMfSLUx0pdRqm78b8bw7h&limit=10";
+      console.log(queryURL);
       $.ajax({
         url: queryURL,
         method: "GET"
@@ -91,6 +91,7 @@ console.log(queryURL);
             // settign the cource attribute from what AJAX responds with
 
             creatureImage.attr("src", results[i].images.fixed_height.url);
+            
 
             // Appending the paragraph and image tag to the creatureDiv
             
