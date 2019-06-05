@@ -31,7 +31,6 @@ $(document).ready(function() {
         // loop for creation of HTML elements to display GIFs
         for (var i = 0; i < results.length; i++) {
           var creatureDiv = $("<div>");
-          creatureDiv.addClass("holder");
           // Showing the Rating
 
           // creating an image tag
