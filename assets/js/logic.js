@@ -29,8 +29,10 @@ $(document).ready(function() {
         var results = response.data;
 
         // loop for creation of HTML elements to display GIFs
-        for (var i = 0; i < results.length; i++) {
+        for (var i = results.length - 1; i >= 0; i--) {
           var creatureDiv = $("<div>");
+          creatureDiv.attr("class", "holder");
+
           // Showing the Rating
 
           // creating an image tag
@@ -38,22 +40,22 @@ $(document).ready(function() {
 
           // setting the source attribute from what AJAX responds with
 
-          creatureImage.attr("src", results[i].images.fixed_height_still.url);
+          creatureImage.attr("src", results[i].images.fixed_width_still.url);
           creatureImage.attr(
             "data-still",
-            response.data[i].images.fixed_height_still.url
+            response.data[i].images.fixed_width_still.url
           );
           creatureImage.attr(
             "data-animate",
-            response.data[i].images.fixed_height.url
+            response.data[i].images.fixed_width.url
           );
           creatureImage.attr("data-state", "still");
           creatureImage.attr("class", "gif");
 
           // Appending the paragraph and image tag to the creatureDiv
-          var p = $("<p>").text("Rating: " + results[i].rating);
+          var div = $("<div>").text("Rating: " + results[i].rating);
 
-          creatureDiv.append(p);
+          creatureDiv.append(div);
 
           creatureDiv.append(creatureImage);
 

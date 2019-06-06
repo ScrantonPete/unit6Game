@@ -1,0 +1,13 @@
+body {
+  background: url("../images/underwater.png");
+  background-size: 50%;
+}
+
+.holder {
+  padding: 10px;
+  display: inline-block;
+}
+
+#label {
+  background-color: white;
+}
