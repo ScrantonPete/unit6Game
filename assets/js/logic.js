@@ -55,9 +55,9 @@ $(document).ready(function() {
           // Appending the paragraph and image tag to the creatureDiv
           var div = $("<div>").text("Rating: " + results[i].rating);
 
-          creatureDiv.append(div);
-
           creatureDiv.append(creatureImage);
+
+          creatureDiv.append(div);
 
           // showing the gifs on top of the screen
           $("#gifs-appear-here").prepend(creatureDiv);
